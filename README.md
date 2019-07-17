@@ -13,7 +13,7 @@ The model parameters are initialized by the pretrained CNN models of ImageNet an
 ## Run
 Download dataset from https://pan.baidu.com/s/1Ff2W2VLJ1ZbWSeV5JbF0Iw(passwoard: if7p)
 
-unzip it as 'data' fold.
+unzip it as the 'data' fold.
 ### train
 ```Bash
 python train.py
