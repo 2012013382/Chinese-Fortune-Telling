@@ -1,7 +1,7 @@
 # Chinese-Fortune-Telling
 A software about chinese fortune telling with someone's Chinese name and face
 ## The state
-We trained a face beauty detecting model with dataset； https://github.com/HCIILAB/SCUT-FBP5500-Database-Release
+We trained a face beauty detecting model with dataset: https://github.com/HCIILAB/SCUT-FBP5500-Database-Release
 ## Requirement
 Tensorflow (over 1.6), python 2.7
 ## Details
