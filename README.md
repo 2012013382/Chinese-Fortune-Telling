@@ -1,5 +1,5 @@
 # Chinese-Fortune-Telling
-A software about chinese fortune telling with  Chinese name and face
+A software about chinese fortune telling with someone's Chinese name and face
 ## The state
 We trained a face beauty detecting model with dataset； https://github.com/HCIILAB/SCUT-FBP5500-Database-Release
 ## Requirement
