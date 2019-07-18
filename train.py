@@ -24,7 +24,7 @@ MOVING_AV_DECAY = 0.9999
 parser = argparse.ArgumentParser()
 parser.add_argument('--model_name', type=str, default='resnet_v1_50')
 parser.add_argument('--batch_size', type=int, default=16)
-parser.add_argument('--epoch_num', type=int, default=None)
+parser.add_argument('--epoch_num', type=int, default=100)
 parser.add_argument('--lr', type=float, default=1e-3)
 args = parser.parse_args()
 print(args)

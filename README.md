@@ -13,7 +13,11 @@ The model parameters are initialized by the pretrained CNN models of ImageNet an
 ## Run
 Download dataset from https://pan.baidu.com/s/1Ff2W2VLJ1ZbWSeV5JbF0Iw(passwoard: if7p)
 
-unzip it as the 'data' fold.
+Unzip it as the 'data' fold.
+
+Download pretrained model(Resnet_v1_50) from slim:https://github.com/tensorflow/models/tree/master/research/slim
+
+And put it in the fold 'tmp_data'.
 ### train
 ```Bash
 python train.py
@@ -22,6 +26,14 @@ python train.py
 ```Bash
 python test.py
 ```
+### face beauty detection(simple test)
+| images      | score(1-5: higher score means someone is more beautiful.)     | 
+| ---------- | :-----------:  | 
+|   ![img](https://github.com/2012013382/Chinese-Fortune-Telling/blob/master/data/2.jpg)   | 3.67     | 
+|   ![img](https://github.com/2012013382/Chinese-Fortune-Telling/blob/master/data/3.jpg)   | 2.20     | 
+|   ![img](https://github.com/2012013382/Chinese-Fortune-Telling/blob/master/data/4.jpg)   | 3.00     | 
+|   ![img](https://github.com/2012013382/Chinese-Fortune-Telling/blob/master/data/5.jpg)   | 3.08     | 
+|   ![img](https://github.com/2012013382/Chinese-Fortune-Telling/blob/master/data/6.jpg)   | 1.82     | 
 ## Result
 MSE loss: 0.248 on train while 0.318 on test.
 
