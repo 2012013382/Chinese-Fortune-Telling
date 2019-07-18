@@ -26,6 +26,14 @@ python train.py
 ```Bash
 python test.py
 ```
+### face beauty detection(simple test)
+| images      | score(1-5)     | 
+| ---------- | :-----------:  | 
+|   ![img](https://github.com/2012013382/Chinese-Fortune-Telling/blob/master/data/2.jpg)   | 3.67     | 
+|   ![img](https://github.com/2012013382/Chinese-Fortune-Telling/blob/master/data/3.jpg)   | 2.20     | 
+|   ![img](https://github.com/2012013382/Chinese-Fortune-Telling/blob/master/data/4.jpg)   | 3.00     | 
+|   ![img](https://github.com/2012013382/Chinese-Fortune-Telling/blob/master/data/5.jpg)   | 3.08     | 
+|   ![img](https://github.com/2012013382/Chinese-Fortune-Telling/blob/master/data/6.jpg)   | 1.82     | 
 ## Result
 MSE loss: 0.248 on train while 0.318 on test.
 
