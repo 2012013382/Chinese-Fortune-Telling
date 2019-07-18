@@ -27,7 +27,7 @@ python train.py
 python test.py
 ```
 ### face beauty detection(simple test)
-| images      | score(1-5)     | 
+| images      | score(1-5: higher score means someone is more beautiful.)     | 
 | ---------- | :-----------:  | 
 |   ![img](https://github.com/2012013382/Chinese-Fortune-Telling/blob/master/data/2.jpg)   | 3.67     | 
 |   ![img](https://github.com/2012013382/Chinese-Fortune-Telling/blob/master/data/3.jpg)   | 2.20     | 
