@@ -13,7 +13,11 @@ The model parameters are initialized by the pretrained CNN models of ImageNet an
 ## Run
 Download dataset from https://pan.baidu.com/s/1Ff2W2VLJ1ZbWSeV5JbF0Iw(passwoard: if7p)
 
-unzip it as the 'data' fold.
+Unzip it as the 'data' fold.
+
+Download pretrained model(Resnet_v1_50) from slim:https://github.com/tensorflow/models/tree/master/research/slim
+
+And put it in the fold 'tmp_data'.
 ### train
 ```Bash
 python train.py
