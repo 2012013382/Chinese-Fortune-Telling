@@ -19,7 +19,7 @@ parser.add_argument('--save_features', type=str, default="True")
 args = parser.parse_args()
 print(args)
 
-def feature_extract():
+def feature_extract(image_path):
     with tf.Graph().as_default():
         image = tf.placeholder(tf.float32, [None, IMG_HEIGHT, IMG_WIDTH, IMG_CHANNEL])
         logits, features = predict_model(image, is_training=False)
@@ -33,15 +33,13 @@ def feature_extract():
             sess.run(tf.global_variables_initializer())
             sess.run(tf.local_variables_initializer())
             variables_restorer.restore(sess, BEST_MODEL_PATH)
-            img = read_one_image(args.image_path, args.batch)
+            img = read_one_image(image_path, args.batch)
             if args.batch == "True":
                 feature = sess.run(features,  feed_dict={image: img})
                 print(feature.shape)
                 np.save("tmp_data/image_features.npy", feature)
                 return feature
             else:
-                score = sess.run(logits,  feed_dict={image: img})
-                print(score[0][0])
-                return score[0][0]
-
-feature_extract()
+                feature = sess.run(features,  feed_dict={image: img})
+                print(feature.shape)
+                return feature

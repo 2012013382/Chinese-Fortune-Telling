@@ -1,23 +1,48 @@
 import numpy as np
 import sys
-def euc_dist(x, y):
-	return np.linalg.norm(x - y)
+import pickle
+import fnmatch
+import os
+import natsort
 
-#构造数据
-cp_base = []
-for i in range(2000):
-	cp_base.append(np.random.beta(10,10,2096))
+class best_match:
+	def __init__(self):
+		self.male_cp_base = []
+		self.male = []
+		self.female_cp_base = []
+		self.female = []
 
-#计算最佳匹配
-cand = np.random.beta(10,10,2096)
-min_num = sys.maxsize
-idex = 0
-for i in range(len(cp_base)):
-	d = euc_dist(cand, cp_base[i])
-	if d < min_num:
-		min_num = d
-		idex = i
+		with open("cp_base_features_0.pkl", "rb") as f:
+			d = pickle.load(f)
+		for e in d:
+			self.male_cp_base.append(e['feature'])
+			self.male.append(e['label'])
 
-print(cp_base[idex])
-print(cand)
-print(euc_dist(cand, cp_base[idex]))
+		with open("cp_base_features_1.pkl", "rb") as f:
+			d = pickle.load(f)
+		for e in d:
+			self.female_cp_base.append(e['feature'])
+			self.female.append(e['label'])
+
+	def euc_dist(self, x, y):
+		return np.linalg.norm(x - y)
+
+	def get_matched_for_male(self, cand):
+		min_num = sys.maxsize
+		idex = 0
+		for i in range(len(self.female_cp_base)):
+			d = self.euc_dist(cand, self.female_cp_base[i])
+			if d < min_num:
+				min_num = d
+				idex = i
+		return idex
+
+	def get_matched_for_female(self, cand):
+		min_num = sys.maxsize
+		idex = 0
+		for i in range(len(self.male_cp_base)):
+			d = self.euc_dist(cand, self.male_cp_base[i])
+			if d < min_num:
+				min_num = d
+				idex = i
+		return idex
