@@ -10,8 +10,12 @@ from data_processing import read_one_image, CLASS_NUM, IMG_HEIGHT, IMG_WIDTH, IM
 BEST_MODEL_PATH = './tmp_data/best_model.ckpt'
 
 parser = argparse.ArgumentParser()
+#Please modify the path for your own image fold.
 parser.add_argument('--image_path', type=str, default="data/13_images")
+#If batch is "True", it means it will process images in a fold, or it will only process one image.
 parser.add_argument('--batch', type=str, default="False")
+#If save_features is "True", it means it will save image features as .npy in 'tmp_data', or it will only return it.
+parser.add_argument('--save_features', type=str, default="True")
 args = parser.parse_args()
 print(args)
 
@@ -33,6 +37,7 @@ def feature_extract():
             if args.batch == "True":
                 feature = sess.run(features,  feed_dict={image: img})
                 print(feature.shape)
+                np.save("tmp_data/image_features.npy", feature)
                 return feature
             else:
                 score = sess.run(logits,  feed_dict={image: img})
