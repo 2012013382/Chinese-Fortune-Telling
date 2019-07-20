@@ -42,6 +42,6 @@ def feature_extract(image_path):
                     np.save("tmp_data/image_scores.npy", score)
                 return feature, score
             else:
-                feature = sess.run(features,  feed_dict={image: img})
+                score, feature = sess.run([logits, features],  feed_dict={image: img})
                 #print(feature.shape)
                 return feature, score
