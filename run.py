@@ -13,9 +13,14 @@ def choose_fiel():
 	e.set(selectFileName)
 def upload_func(file_path, name_str):
 	print(name_str)
-	cand = feature_extract(file_path)[0]
+	cand, face_score = feature_extract(file_path)
+	cand = cand[0]
 	match_idx = matcher.get_matched_for_male(cand)
 	matched_path = os.path.join("photos",matcher.female[match_idx])
+	# ---------颜值显示--------------------
+	text = Text(windows)
+	text.insert("insert", str(face_score))
+	text.pack()
 	showImg(matched_path)
 	pass
 def showImg(img1):
@@ -28,6 +33,8 @@ def showImg(img1):
 	pass
 #---------窗口-----------------
 matcher = best_match()
+del matcher.female[16]
+del matcher.female_cp_base[16]
 windows = tk.Tk()
 e = tk.StringVar()
 e_entry = tkinter.Entry(windows, width=68, textvariable=e)
@@ -39,10 +46,7 @@ submit_button.pack()
 name_para = tk.StringVar()
 name = tkinter.Entry(windows, textvariable = name_para)
 name.pack()
-#---------颜值显示--------------------
-text = Text(windows)
-text.insert("insert", "hhhh")
-text.pack()
+
 #---------处理图片button--------------
 submit_button = tkinter.Button(windows, text ="上传", command = lambda:upload_func(e_entry.get(), name.get()))
 submit_button.pack()

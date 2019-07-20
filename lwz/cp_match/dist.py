@@ -26,7 +26,8 @@ class best_match:
 
 	def euc_dist(self, x, y):
 		return np.linalg.norm(x - y)
-
+	def cos_dist(self, x, y):
+		return np.dot(x, y) / np.linalg.norm(x) * np.linalg.norm(y)
 	def get_matched_for_male(self, cand):
 		min_num = sys.maxsize
 		idex = 0
