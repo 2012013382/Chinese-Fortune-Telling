@@ -35,7 +35,7 @@ python test.py
 |   ![img](https://github.com/2012013382/Chinese-Fortune-Telling/blob/master/data/5.jpg)   | 3.08     | 
 |   ![img](https://github.com/2012013382/Chinese-Fortune-Telling/blob/master/data/6.jpg)   | 1.82     | 
 ## Result
-MSE loss: 0.248 on train while 0.318 on test.
+RMSE loss: 0.248 on train while 0.318 on test.
 
 ## Reference
 https://github.com/HCIILAB/SCUT-FBP5500-Database-Release
