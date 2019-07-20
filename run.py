@@ -5,6 +5,7 @@ from feature_extract import feature_extract
 from PIL import Image, ImageTk
 import pickle
 from lwz.cp_match.dist import best_match
+from suanming.getname import xingmingceping
 import os
 
 #---------函数定义-------------
@@ -18,9 +19,20 @@ def upload_func(file_path, name_str):
 	match_idx = matcher.get_matched_for_male(cand)
 	matched_path = os.path.join("photos",matcher.female[match_idx])
 	# ---------颜值显示--------------------
-	text = Text(windows)
-	text.insert("insert", str(face_score))
-	text.pack()
+	text1 = Text(windows)
+	text1.insert("insert", str(face_score))
+	text1.pack()
+
+	family_name = name_str[0]
+	first_name = name_str[1:]
+	res_arr = xingmingceping(family_name,first_name)
+	res = ""
+	for i in res_arr:
+		res += i + "\n"
+
+	text2 = Text(windows)
+	text2.insert("insert", res)
+	text2.pack()
 	showImg(matched_path)
 	pass
 def showImg(img1):

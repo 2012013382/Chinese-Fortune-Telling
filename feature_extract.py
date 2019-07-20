@@ -45,3 +45,4 @@ def feature_extract(image_path):
                 score, feature = sess.run([logits, features],  feed_dict={image: img})
                 #print(feature.shape)
                 return feature, score
+
