@@ -12,19 +12,27 @@ import os
 def choose_fiel():
 	selectFileName = tk.filedialog.askopenfilename(title='选择文件')  # 选择文件
 	e.set(selectFileName)
-def upload_func(file_path, name_str):
+def upload_func(file_path, name_str, gender_str):
 	print(name_str)
 	cand, face_score = feature_extract(file_path)
 	cand = cand[0]
-	match_idx = matcher.get_matched_for_male(cand)
-	matched_path = os.path.join("photos",matcher.female[match_idx])
+	if gender_str == "男":
+		match_idx = matcher.get_matched_for_male(cand)
+		matched_path = os.path.join("photos", matcher.female[match_idx])
+	else:
+		match_idx = matcher.get_matched_for_female(cand)
+		matched_path = os.path.join("photos", matcher.male[match_idx])
 	# ---------颜值显示--------------------
 	text1 = Text(windows)
 	text1.insert("insert", str(face_score))
 	text1.pack()
 
-	family_name = name_str[0]
-	first_name = name_str[1:]
+	if len(name_str) <= 3:
+		family_name = name_str[0]
+		first_name = name_str[1:]
+	if len(name_str) == 4:
+		family_name = name_str[:1]
+		first_name = name_str[2:]
 	res_arr = xingmingceping(family_name,first_name)
 	res = ""
 	for i in res_arr:
@@ -58,9 +66,12 @@ submit_button.pack()
 name_para = tk.StringVar()
 name = tkinter.Entry(windows, textvariable = name_para)
 name.pack()
-
+#---------输入性别button--------------
+gender_para = tk.StringVar()
+gender = tkinter.Entry(windows, textvariable = gender_para)
+gender.pack()
 #---------处理图片button--------------
-submit_button = tkinter.Button(windows, text ="上传", command = lambda:upload_func(e_entry.get(), name.get()))
+submit_button = tkinter.Button(windows, text ="上传", command = lambda:upload_func(e_entry.get(), name.get(), gender.get()))
 submit_button.pack()
 
 
