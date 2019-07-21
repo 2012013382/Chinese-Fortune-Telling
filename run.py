@@ -31,7 +31,7 @@ def upload_func(file_path, name_str, gender_str):
 		family_name = name_str[0]
 		first_name = name_str[1:]
 	if len(name_str) == 4:
-		family_name = name_str[:1]
+		family_name = name_str[:2]
 		first_name = name_str[2:]
 	res_arr = xingmingceping(family_name,first_name)
 	res = ""
