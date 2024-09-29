@@ -8,6 +8,7 @@ from lwz.cp_match.dist import best_match
 from suanming.getname import xingmingceping
 import os
 
+# XXXXXXX
 #---------函数定义-------------
 def choose_fiel():
 	selectFileName = tk.filedialog.askopenfilename(title='选择文件')  # 选择文件
